@@ -12,10 +12,10 @@ import kotlin.random.Random
 
 object ItemsProvider {
 
-    // private val _observable = MutableLiveData<List<String>>()
-    // val observable: LiveData<List<String>> get() = _observable
+    private val _observable = MutableLiveData<List<String>>()
+    val observable: LiveData<List<String>> get() = _observable
 
-    val observable = Observable<List<String>>(emptyList())
+    // val observable = Observable<List<String>>(emptyList())
     private var values = emptyList<String>()
     private val random = Random(System.currentTimeMillis())
 
@@ -30,8 +30,8 @@ object ItemsProvider {
                 withContext(Dispatchers.Main) {
 
                     values += random.nextInt().toString()
-                    // _observable.value = values
-                    observable.updateValue(values)
+                    _observable.value = values
+                    // observable.updateValue(values)
                 }
             }
         }
